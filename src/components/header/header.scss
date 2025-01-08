@@ -120,6 +120,7 @@
 		&__button-sing {
 			position: relative;
 			padding-left: 52px;
+			color: white;
 				&:before {
 					content: '';
 					position: absolute;
@@ -131,7 +132,6 @@
 					height: 25px;
 					background: url('../../resourses/img/icons/user.svg') no-repeat;
 					background-size: cover;
-					color: white;
 		}
 	}
 }
