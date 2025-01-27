@@ -1,13 +1,14 @@
-import Header from  './components/header/Header';
-
-
+import Header from "./components/header/Header";
+import { AuthProvider } from "./contexts/AuthContext";
 
 const App = () => {
   return (
     <div className="App">
-      <Header/>
+      <AuthProvider>
+        <Header />
+      </AuthProvider>
     </div>
   );
-}
+};
 
 export default App;
