@@ -7,6 +7,7 @@ import Profile from "./components/profile/Profile";
 import { AuthProvider } from "./contexts/AuthContext";
 import PersonalData from "./components/profile/personal-data/PersonalData";
 import Orders from "./components/profile/orders/Orders";
+import Cart from "./components/profile/cart/Cart";
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
               <Route index element={<PersonalData />} />
               <Route path="personal" element={<PersonalData />} />
               <Route path="orders" element={<Orders />} />
+              <Route path="cart" element={<Cart />} />
             </Route>
           </Routes>
         </BrowserRouter>

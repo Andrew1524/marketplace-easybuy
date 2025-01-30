@@ -1,17 +1,15 @@
 
 
 .header {
-	// padding: 20px;
 
 	background: linear-gradient(to top, #4B99FF, #213348);
 	border-bottom: 4px solid rgba(94, 126, 166, 1);
-	box-shadow: 1px 2px 6px grey;
 
 		&__row {
 			display: flex;
-			// column-gap: 30px;
+			column-gap: 30px;
 			align-items: center;
-			// justify-content: space-between;
+			justify-content: space-between;
 		}
 
 		&__logo {
