@@ -1,9 +1,11 @@
 body {
 	font-family: 'Inter', sans-serif;
 	overflow-x: hidden;
+	background-color: #F8F9FB;
 }
 
 .container {
 	// а зачем? почему не просто max-width: 100%;?
+	// max-width: 100;
 	max-width: 1920px;
 }
