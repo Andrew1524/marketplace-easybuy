@@ -1,7 +1,8 @@
 
 
 .header {
-	padding: 30px 120px;
+	// padding: 20px;
+
 	background: linear-gradient(to top, #4B99FF, #213348);
 	border-bottom: 4px solid rgba(94, 126, 166, 1);
 	box-shadow: 1px 2px 6px grey;
@@ -14,7 +15,8 @@
 		}
 
 		&__logo {
-			margin-right: 56px;
+			img{
+			}
 		}
 
 		&__nav {
@@ -80,7 +82,7 @@
 			align-items: center;
 			font-size: 16px;
 			// margin-right: 9px;
-			
+
 		}
 		&__info li a {
 			color: #fff;
@@ -128,8 +130,6 @@
 					bottom: 0;
 					left: 13px;
 					margin: auto 0;
-					width: 24px;
-					height: 25px;
 					background: url('../../resourses/img/icons/user.svg') no-repeat;
 					background-size: cover;
 		}

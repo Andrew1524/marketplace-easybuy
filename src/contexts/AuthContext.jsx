@@ -14,7 +14,7 @@ const AuthProvider = ({ children }) => {
     }
   }, []);
 
-  // checks if 'easybuy' exists in localStorage
+  // checks if 'easybuy' object exists in localStorage
   function checkLocalData() {
     const localData = localStorage.getItem("easybuy");
     if (localData) {
@@ -23,7 +23,7 @@ const AuthProvider = ({ children }) => {
     return false;
   }
 
-  // checks if 'easybuy' exists in sessionStorage
+  // checks if 'easybuy' object exists in sessionStorage
   function checkSessionData() {
     const sessionData = sessionStorage.getItem("easybuy");
     if (sessionData) {
@@ -88,8 +88,13 @@ const AuthProvider = ({ children }) => {
     setToken(null);
   };
 
+  function isAuth() {
+    return token !== null;
+  }
+
+
   return (
-    <AuthContext.Provider value={{ token, login, logout }}>
+    <AuthContext.Provider value={{ token, login, logout, isAuth }}>
       {children}
     </AuthContext.Provider>
   );

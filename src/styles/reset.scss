@@ -24,6 +24,10 @@
   aside, nav, footer, header, section, main {
 	display: block;
   }
+
+  header {
+	padding: 20px;
+  }
   
   h1, h2, h3, h4, h5, h6, p {
 	font-size: inherit;
@@ -40,7 +44,8 @@
   
   img {
 	vertical-align: top;
-	max-width: 100%;
+	// с ним почему то пропал лого
+	// max-width: 100%;
 	height: auto;
   }
   

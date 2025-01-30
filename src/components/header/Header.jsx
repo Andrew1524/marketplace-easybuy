@@ -1,79 +1,42 @@
-import "./header.scss";
-import logo from "../../resourses/img/logo/logo.svg";
-import fingerPrint from "../../resourses/img/icons/fingerprint.svg";
-import iconLike from "../../resourses/img/icons/favorite.svg";
-import iconCard from "../../resourses/img/icons/shopping.svg";
-import AuthModal from "../auth/AuthModal";
+import ProfileButton from "./profile/ProfileButton";
+import SearchBar from "./search-bar/SearchBar";
+import Logo from "./logo/Logo";
+import FavouritesButton from "./favs/FavouritesButton";
+import CartButton from "./cart/CartButton";
+import FiltersButton from "./filters/FiltersButton";
 
-import { useState } from "react";
+import { NavLink } from "react-router-dom";
+
+import "./header.scss";
 
 const Header = () => {
-  const [showAuthModal, setShowAuthModal] = useState(true);
-
   return (
     <header className="header">
       <div className="container">
         <div className="header__row">
-          <div className="header__logo">
-            <img src={logo} alt="logotypes" />
-          </div>
+          <Logo />
           <nav className="header__nav">
             <ul className="header__info">
               <li>
-                <a href="!#">Catalogue</a>
+                <NavLink to="/catalogue">Catalogue</NavLink>
               </li>
               <li>
-                <a href="!#">Sale</a>
+                <NavLink to="/sale">Sale</NavLink>
               </li>
             </ul>
-            <div className="header__search">
-              <label className="header__search-field" htmlFor="">
-                <input
-                  className="header__search-input"
-                  type="search"
-                  placeholder="Search"
-                />
-                <button className="header__search-button">Search</button>
-              </label>
-            </div>
+            <SearchBar />
             <div className="header__icons">
               <ul>
-                <li>
-                  <a href="!#">
-                    <img src={iconLike} alt="Favourites" title="Favourites" />
-                  </a>
-                </li>
-                <li>
-                  <a href="!#">
-                    <img
-                      src={fingerPrint}
-                      alt="Saved filters"
-                      title="Saved filters"
-                    />
-                  </a>
-                </li>
-                <li>
-                  <a href="!#">
-                    <img src={iconCard} alt="Cart" title="Cart" />
-                  </a>
-                </li>
+                <FavouritesButton />
+                <FiltersButton />
+                <CartButton />
               </ul>
-              <div className="header__sing">
-                <button
-                  className="header__button-sing"
-                  onClick={() => {
-                    setShowAuthModal(true);
-                    console.log("click");
-                  }}
-                >
-                  Sign Up
-                </button>
-              </div>
+              {/* а шо если передвинуть ProfileButton внутрь списка ul? */}
+              <ProfileButton />
             </div>
           </nav>
         </div>
       </div>
-      <AuthModal isShown={showAuthModal} />
     </header>
   );
 };
