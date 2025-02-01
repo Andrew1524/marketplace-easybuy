@@ -13,6 +13,7 @@
   
   a {
 	text-decoration: none;
+	color: #fff;
   
 	&:link, &:visited, &:hover {
 	  text-decoration: none;
@@ -32,12 +33,12 @@
   
   ul {
 	list-style: none;
-  
-	li {
-	  list-style: none;
+}
+    
+li {
+	list-style: none;
 	}
-  }
-  
+
   img {
 	vertical-align: top;
 	max-width: 100%;
