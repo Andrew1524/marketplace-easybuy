@@ -1,6 +1,9 @@
 import Header from  './components/header/Header';
-import CarouselSection from './components/Favorite Brands/Favorite Brands'
-import UkrainianBrands from './components/Ukrainian Brands/Ukrainian Brands'; 
+import CarouselSection from './components/favorite brands/CarouselSection';
+import UaBrands from './components/ukrainian brands/UaBrands'; 
+import Slider from './components/banner/Slider';
+import Recommendations from './components/recommendations/Recommendations';
+import Footer from './components/footer/Footer'
 
 
 
@@ -8,9 +11,11 @@ const App = () => {
   return (
     <div className="App">
       <Header/>
+      <Slider/>
       <CarouselSection/>
-      <UkrainianBrands />
-
+      <UaBrands />
+      <Recommendations/>
+      <Footer/>
     </div>
   );
 }
