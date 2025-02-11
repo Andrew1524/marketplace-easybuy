@@ -1,5 +1,5 @@
 import './header.scss';
-import logo from '../../resourses/img/logo/logo.svg'
+import logo from '../../resourses/img/logo/logo.png'
 import fingerPrint from '../../resourses/img/icons/fingerprint.svg';
 import iconLike from '../../resourses/img/icons/favorite.svg';
 import iconCard from '../../resourses/img/icons/shopping.svg';
@@ -10,12 +10,17 @@ const Header = () => {
 			<div className="container">
 				<div className="header__row">
 					<div className="header__logo">
-						<img src={logo} alt="logotypes" />
+						<img 
+						src={logo} 
+						alt="logotypes"
+						style={{"paddingTop": "4px"}} />
 					</div>
 					<nav className="header__nav">
 						<ul className='header__info'>
 							<li>
-								<a href="!#">Catalogue</a>
+								<a href="!#"
+								style={{"fontSize": "24px", "fontWeight": "700", "marginRight": "50px"}}
+								>Catalogue</a>
 							</li>
 							<li>
 								<a href="!#">Sale</a>

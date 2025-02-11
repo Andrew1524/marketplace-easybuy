@@ -1,5 +1,5 @@
 import './footer.scss'
-import logo from '../../resourses/img/logo/logo.svg'
+import logo from '../../resourses/img/logo/logo.png'
 import facebook from '../../resourses/img/icons/facebook.svg'
 import instagram from '../../resourses/img/icons/instagram.svg'
 import telegram from '../../resourses/img/icons/telegram.svg'
@@ -67,9 +67,9 @@ const Footer = () => {
 							Join our marketplace and discover new opportunities for your business!
 							</h3>
 							<ul className='footer__main-item links'>
-								<li>Millions of buyers are waiting for your products</li>
-								<li>Increase sales and make more profit</li>
-								<li>User-friendly control panel and growth tools</li>
+								<li>Millions of buyers are waiting for your products;</li>
+								<li>Increase sales and make more profit;</li>
+								<li>User-friendly control panel and growth tools;</li>
 							</ul>
 							<div className="footer__main-item btn">
 								<button className="footer__main-item button">Sell Your Item</button>
