@@ -1,22 +1,37 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import SignUp from "./sign-up/SignUp";
 import SignIn from "./sign-in/SignIn";
 
 import "./AuthModal.scss";
 
-const AuthModal = ({ isShown, toggleIsShown }) => {
+const AuthModal = ({ isShown, setShowAuthModal }) => {
 
-  function close(){
+
+  useEffect(() => {
+    // const handleEsc = (event) => {
+    //   if (event.keyCode === 27) {
+    //     toggleIsShown(false);
+    //   }
+    // };
+    // window.addEventListener("keydown", handleEsc);
+    // return () => {
+    //   window.removeEventListener("keydown", handleEsc);
+    // };
+
+    
+    console.log("isShown", isShown);
+    
+  }, [isShown]);
+  
+  function close() {
     console.log("close");
-    toggleIsShown(false);
+    setShowAuthModal(false);
   }
   // decide if the user is logging in or signing up
   // if true  => logging in
   // if false => signing up
   const [registered, toggleRegistered] = useState(true);
-  // const [shown, toggleShown] = useState(isShown);
-
 
   return (
     <div className={isShown ? "modal" : "hidden"}>
@@ -30,7 +45,11 @@ const AuthModal = ({ isShown, toggleIsShown }) => {
         >
           &times;
         </span>
-        {registered ? <SignIn closeFunc={close}/> : <SignUp closeFunc={close}/>}
+        {registered ? (
+          <SignIn closeFunc={close} />
+        ) : (
+          <SignUp closeFunc={close} />
+        )}
         {registered ? (
           <div className="auth-actions">
             <a href="/">Forgot password?</a>
