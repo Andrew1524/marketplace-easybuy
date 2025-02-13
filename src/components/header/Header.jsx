@@ -15,7 +15,6 @@ const Header = () => {
     <Navbar
       expand="lg"
       className="header d-flex justify-content-between align-items-center"
-      bg="white"
     >
       <Container fluid className="px-4">
         <Navbar.Brand className="me-4">

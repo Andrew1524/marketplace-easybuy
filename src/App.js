@@ -3,6 +3,7 @@ import Header from "./components/header/Header";
 import Catalogue from "./components/catalogue/Catalogue";
 import Sale from "./components/sale/Sale";
 import Profile from "./components/profile/Profile";
+import Footer from "./components/footer/Footer";
 
 import { AuthProvider } from "./contexts/AuthContext";
 import PersonalData from "./components/profile/personal-data/PersonalData";
@@ -27,10 +28,11 @@ const App = () => {
               <Route path="cart" element={<Cart />} />
             </Route>
           </Routes>
+          <Footer />
         </BrowserRouter>
       </AuthProvider>
     </div>
   );
-}
+};
 
 export default App;

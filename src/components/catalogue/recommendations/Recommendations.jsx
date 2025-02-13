@@ -1,7 +1,7 @@
 import './recommendations.scss';
-import shoes from './../../resourses/img/goods/shoes_2.png'
-import jacket from './../../resourses/img/goods/jacket.jpg'
-import like from './../../resourses/img/icons/active_favorite.svg'
+import shoes from '../../../resourses/img/goods/shoes_2.png'
+import jacket from '../../../resourses/img/goods/jacket.jpg'
+import like from '../../../resourses/img/icons/active_favorite.svg'
 
 const Recommendations = () => {
 	return (
