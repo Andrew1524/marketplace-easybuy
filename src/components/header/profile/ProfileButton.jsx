@@ -1,16 +1,13 @@
-import "./ProfileButton.scss";
-import { useState, useContext } from "react";
-import { AuthContext } from "../../../contexts/AuthContext";
-import { Link } from "react-router-dom";
-import AuthModal from "../../auth/AuthModal";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import AuthModal from '../../auth/AuthModal'; 
 
-const ProfileButton = () => {
-  const { isAuth } = useContext(AuthContext);
+const ProfileButton = ({ authenticated }) => {
   const [showAuthModal, setShowAuthModal] = useState(false);
 
   const handleSignUpClick = () => {
     setShowAuthModal(true);
-    console.log("click");
+    console.log("Sign Up button clicked");
   };
 
   const handleCloseModal = () => {
@@ -32,11 +29,11 @@ const ProfileButton = () => {
       <button className="header__button-sing" onClick={handleSignUpClick}>
         Sign Up
       </button>
-      {showAuthModal && <AuthModal onClose={handleCloseModal} />}
+      {showAuthModal && <AuthModal isShown={showAuthModal} toggleIsShown={handleCloseModal} />}
     </div>
   );
 
-  return isAuth ? renderProfileButton() : renderSignUpButton();
+  return authenticated ? renderProfileButton() : renderSignUpButton();
 };
 
 export default ProfileButton;
