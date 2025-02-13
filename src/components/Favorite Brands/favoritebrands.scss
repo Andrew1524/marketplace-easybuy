@@ -1,0 +1,211 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=Inter:wght@400;700&display=swap');
+
+body {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+.line {
+  text-align: center;
+  border-top: 1px dashed rgba(16, 76, 154, 1);
+  height: 18px;
+}
+
+.carousel-section-logo {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 56px;
+  color: rgba(16, 76, 154, 1);
+  width: 397px;
+  height: 56px;
+  margin: 0;
+}
+
+/* Кнопка "Shop Now" з підкресленням */
+.shop-now {
+  text-decoration: none;
+  color: rgba(16, 76, 154, 1);
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.3s;
+  position: relative;
+
+  &:hover {
+    color: #003366;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #003366;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  &:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+
+  svg {
+    width: 32px;
+    height: 32px;
+    fill: none;
+    stroke: #1f487e;
+    transition: transform 0.3s ease;
+  }
+
+  &:hover svg {
+    transform: translateX(5px);
+  }
+}
+
+/* Карусель */
+.carousel-section {
+  margin: 40px auto 10px;
+  max-width: 1200px;
+  text-align: center;
+  position: relative;
+  padding: 0 10px;
+
+  .carousel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 0 20px;
+  }
+
+  .carousel-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .carousel {
+      display: flex;
+      gap: 20px;
+      max-width: 100%;
+
+      img {
+        width: 120px;
+        height: 120px;
+        object-fit: contain;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        background: rgba(255, 245, 236, 1);
+        border-radius: 12px;
+        box-shadow: 0 10px 14px rgba(0, 0, 0, 0.1);
+        padding: 15px;
+
+        &:hover {
+          transform: scale(1.05);
+          box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+      }
+    }
+
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 56px;
+      height: 56px;
+
+      svg {
+        width: 100%;
+        height: 100%;
+        transition: transform 0.3s ease;
+
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+
+      &.left {
+        left: -20px;
+      }
+
+      &.right {
+        right: -20px;
+      }
+    }
+  }
+
+  .banner {
+    margin: 40px auto;
+    text-align: center;
+
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+  }
+}
+
+/* Адаптивність */
+@media (max-width: 768px) {
+  .carousel-section {
+    .carousel-wrapper {
+      .carousel {
+        img {
+          width: 90px;
+          height: 90px;
+        }
+      }
+
+      .carousel-btn {
+        padding: 8px 12px;
+        font-size: 16px;
+      }
+    }
+
+    .carousel-section-logo {
+      font-size: 1.3rem;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel-section {
+    .carousel-wrapper {
+      .carousel {
+        img {
+          width: 70px;
+          height: 70px;
+        }
+      }
+
+      .carousel-btn {
+        padding: 6px 10px;
+        font-size: 14px;
+      }
+    }
+
+    .carousel-section-logo {
+      font-size: 1.2rem;
+    }
+  }
+}

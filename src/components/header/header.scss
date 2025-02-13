@@ -2,27 +2,29 @@
 
 .header {
 
-	background: linear-gradient(to top, #4B99FF, #213348);
+	background: #104C9A;
 	border-bottom: 4px solid rgba(94, 126, 166, 1);
+	box-shadow: 1px 2px 6px grey;
+	margin-bottom: 56px;
+
+		&__logo {
+			margin-right: 165px;
+		}
 
 		&__row {
 			display: flex;
 			column-gap: 30px;
 			align-items: center;
+			padding: 31px 0 31px 0;
+			// justify-content: space-between;
 			justify-content: space-between;
-		}
-
-		&__logo {
-			img{
-			}
 		}
 
 		&__nav {
 			display: flex;
-			column-gap: 59px;
+			column-gap: 56px;
 			align-items: center;
-			margin-left: 132px;
-			// margin-right: 100px;
+			// margin-left: 108px;
 		}
 
 		&__search {
@@ -66,7 +68,7 @@
 			top: 0;
 			right: 0;
 			bottom: 0;
-			background: linear-gradient(to bottom, #FF2E67, #A22748);
+			background: linear-gradient(to bottom, #FF7400, #DF4300);
 			color: white;
 		}
 
@@ -75,12 +77,11 @@
 		// }
 
 		&__info {
-			column-gap: 45px;
+			// column-gap: 45px;
 			display: flex;
 			align-items: center;
 			font-size: 16px;
-			// margin-right: 9px;
-
+			margin-bottom: 0;
 		}
 		&__info li a {
 			color: #fff;
@@ -128,6 +129,8 @@
 					bottom: 0;
 					left: 13px;
 					margin: auto 0;
+					width: 24px;
+					height: 25px;
 					background: url('../../resourses/img/icons/user.svg') no-repeat;
 					background-size: cover;
 		}

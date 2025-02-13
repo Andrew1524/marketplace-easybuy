@@ -1,16 +1,13 @@
 body {
-  font-family: "DM Sans", sans-serif;
-  overflow-x: hidden;
-  background-color: #f8f9fb;
+	font-family: 'Inter', sans-serif;
+	overflow-x: hidden;
+	background-color: #FFF9F6;
 }
 
 .container {
-  // а зачем? почему не просто max-width: 100%;?
-  // max-width: 100;
-  max-width: 1920px;
-}
-
-.active-link {
-  font-weight: bold;
-  // color: blue;
+	max-width: 1680px;
+	margin: 0 auto;
+	padding: 0;
+	// margin-left: 120px;
+    // margin-right: 120px;
 }
