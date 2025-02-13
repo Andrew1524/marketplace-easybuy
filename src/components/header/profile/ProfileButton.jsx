@@ -38,7 +38,7 @@ const ProfileButton = () => {
     </div>
   );
 
-  return isAuth ? renderProfileButton() : renderSignUpButton();
+  return isAuth() ? renderProfileButton() : renderSignUpButton();
 };
 
 export default ProfileButton;

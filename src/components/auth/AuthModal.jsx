@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import SignUp from "./sign-up/SignUp";
 import SignIn from "./sign-in/SignIn";
@@ -6,23 +6,6 @@ import SignIn from "./sign-in/SignIn";
 import "./AuthModal.scss";
 
 const AuthModal = ({ isShown, setShowAuthModal }) => {
-
-
-  useEffect(() => {
-    // const handleEsc = (event) => {
-    //   if (event.keyCode === 27) {
-    //     toggleIsShown(false);
-    //   }
-    // };
-    // window.addEventListener("keydown", handleEsc);
-    // return () => {
-    //   window.removeEventListener("keydown", handleEsc);
-    // };
-
-    
-    console.log("isShown", isShown);
-    
-  }, [isShown]);
   
   function close() {
     console.log("close");
@@ -31,10 +14,12 @@ const AuthModal = ({ isShown, setShowAuthModal }) => {
   // decide if the user is logging in or signing up
   // if true  => logging in
   // if false => signing up
+
+  
   const [registered, toggleRegistered] = useState(true);
 
   return (
-    <div className={isShown ? "modal" : "hidden"}>
+    <div className={isShown ? "modal_" : "hidden_"}>
       <div className="content">
         <span
           className="close-button"

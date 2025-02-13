@@ -1,5 +1,6 @@
 import React from "react";
 import { useState, useContext } from "react";
+import Urls from "../../../Urls";
 import { AuthContext } from "../../../contexts/AuthContext";
 
 import axious from "axios";
@@ -7,10 +8,16 @@ import "./SignUp.scss";
 
 const SignUp = ({ closeFunc }) => {
   const [error, setError] = useState(null);
+
+
+  // если регистрация прошла успешно
+  const [isSuccess, setIsSuccess] = useState(true);
+
   const { login } = useContext(AuthContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     const email = e.target.elements.email.value;
     const password = e.target.elements.password.value;
     const confirmPassword = e.target.elements.confirmPassword.value;
@@ -42,7 +49,7 @@ const SignUp = ({ closeFunc }) => {
 
   function sendSignUpRequest(email, password, remember) {
     axious
-      .post("https://stingray-app-56rei.ondigitalocean.app/auth/signup", {
+      .post(`${Urls.API_BASE_URL_LOCAL}/signup`, {
         email,
         password,
       })
@@ -53,7 +60,7 @@ const SignUp = ({ closeFunc }) => {
       })
       .catch((error) => {
         console.error(error);
-        setError("An error occurred. Please try again later.");
+        setError("API error. Please try again later.");
       });
   }
 
@@ -64,6 +71,13 @@ const SignUp = ({ closeFunc }) => {
 
   return (
     <>
+      {error && <div className="error">{error}</div>}
+      {isSuccess && (
+        <div className="success-container">
+          <h2 className="success-header">Check your email!</h2>
+          <p className="success-text">We've sent you a link to verify your account</p>
+        </div>
+      )}
       <h1>Sign Up</h1>
       <form onSubmit={handleSubmit}>
         <label htmlFor="email">Email</label>
@@ -77,17 +91,22 @@ const SignUp = ({ closeFunc }) => {
           placeholder="Repeat Password"
         />
 
-        {/* сделай их слева, пж <3 */}
-        <input type="checkbox" id="remember" />
-        <label htmlFor="remember">Remember me?</label>
-        <input type="checkbox" id="terms" required />
-        <label htmlFor="terms">
-          I agree to the <a href="/">terms of service</a>
-        </label>
-        <input type="checkbox" id="privacy" required />
-        <label htmlFor="privacy">
-          I agree to the <a href="/">privacy policy</a>
-        </label>
+        <div className="form-checkbox">
+          <input type="checkbox" id="remember" />
+          <label htmlFor="remember">Remember me?</label>
+        </div>
+        <div className="form-checkbox">
+          <input type="checkbox" id="terms" required />
+          <label htmlFor="terms">
+            I agree to the <a href="/">terms of service</a>
+          </label>
+        </div>
+        <div className="form-checkbox">
+          <input type="checkbox" id="privacy" required />
+          <label htmlFor="privacy">
+            I agree to the <a href="/">privacy policy</a>
+          </label>
+        </div>
 
         {/* нужно еще эту кнопку разукрасить как в дизайне */}
         <button type="submit">Sign Up</button>
