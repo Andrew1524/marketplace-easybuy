@@ -21,6 +21,10 @@ const SignUp = ({ closeFunc }) => {
     const email = e.target.elements.email.value;
     const password = e.target.elements.password.value;
     const confirmPassword = e.target.elements.confirmPassword.value;
+
+    const firstName = e.target.elements.firstName.value;
+    const lastName = e.target.elements.lastName.value;
+
     const terms = e.target.elements.terms.checked;
     const privacy = e.target.elements.privacy.checked;
     const remember = e.target.elements.remember.checked;
@@ -28,6 +32,16 @@ const SignUp = ({ closeFunc }) => {
     if (password !== confirmPassword) {
       setError("Passwords do not match");
       return;
+    }
+
+    if(!firstName || !lastName){
+        setError("First name and last name are required");
+        return;
+    }
+
+    if(!validateNames(firstName, lastName)){
+        setError("First name and last name must contain only letters");
+        return;
     }
 
     if (!terms || !privacy) {
@@ -42,21 +56,22 @@ const SignUp = ({ closeFunc }) => {
     }
 
     setError(null);
-    sendSignUpRequest(email, password, remember);
+    sendSignUpRequest(email, password, firstName, lastName, remember);
 
     console.log("Form submitted", { email, password });
   };
 
-  function sendSignUpRequest(email, password, remember) {
+  function sendSignUpRequest(email, password, firstName, lastName, remember) {
     axious
-      .post(`${Urls.API_BASE_URL_LOCAL}/signup`, {
+      .post(`${Urls.API_BASE_URL_LOCAL}/Authentication/register`, {
         email,
         password,
+        firstName,
+        lastName,
       })
       .then((response) => {
         console.log(response);
-        login(response.data.token, remember);
-        closeFunc();
+        setIsSuccess(true);
       })
       .catch((error) => {
         console.error(error);
@@ -67,6 +82,11 @@ const SignUp = ({ closeFunc }) => {
   function validatePassword(password) {
     const re = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}$/;
     return re.test(password);
+  }
+
+  function validateNames(firstName, lastName){
+    const re = /^[a-zA-Z]+$/;
+    return re.test(firstName) && re.test(lastName);
   }
 
   return (
@@ -90,9 +110,21 @@ const SignUp = ({ closeFunc }) => {
           id="confirmPassword"
           placeholder="Repeat Password"
         />
+        <div className='first-last-name'>
+
+          <div className='first-name'>
+            <label htmlFor="firstName">First Name</label>
+            <input type="text" id="firstName" placeholder="First Name" required/>
+          </div>
+          <div className='last-name'>
+            <label htmlFor="lastName">Last Name</label>
+            <input type="text" id="lastName" placeholder="Last Name" required/>
+          </div>
+
+        </div>
 
         <div className="form-checkbox">
-          <input type="checkbox" id="remember" />
+          <input type="checkbox" id="remember"/>
           <label htmlFor="remember">Remember me?</label>
         </div>
         <div className="form-checkbox">
