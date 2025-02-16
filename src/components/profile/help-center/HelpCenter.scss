@@ -1,0 +1,110 @@
+.help-center {
+  &__any-questions {
+    color: #104c9a;
+    font-size: 16px;
+  }
+
+  &__any-questions-buttons {
+    display: flex;
+    margin-top: 20px;
+
+    width: 70%;
+    justify-content: space-between;
+  }
+
+  &__button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 10px;
+
+    //может переменную сделать для цвета
+    color: #104c9a;
+
+    img {
+      width: 50px;
+      height: 50px;
+    }
+
+    p {
+      font-size: 16px;
+      margin-top: 10px;
+    }
+  }
+
+  &__button:hover {
+    cursor: pointer;
+    background-color: #f2f2f2;
+    border-radius: 10px;
+  }
+
+  &__contact-us {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+
+    h2 {
+      color: #104c9a;
+      font-size: 32px;
+      font-weight: 700;
+    }
+
+    p {
+      font-size: 16px;
+      color: #104c9a;
+    }
+
+    &-form {
+      display: flex;
+      flex-direction: column;
+      margin-top: 20px;
+      width: 70%;
+
+      input {
+        padding: 7px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        border-radius: 10px;
+        font-size: 16px;
+        border: 1px solid #104c9a;
+      }
+
+      textarea {
+        padding: 10px;
+        margin-top: 10px;
+        border-radius: 10px;
+        border: 1px solid #104c9a;
+        font-size: 16px;
+        padding: 7px;
+      }
+
+      button {
+        padding: 10px;
+        margin-top: 10px;
+        border-radius: 10px;
+        border: 1px solid #104c9a;
+        background-color: #104c9a;
+        color: white;
+        font-size: 16px;
+
+        width: 35%;
+      }
+    }
+  }
+
+  &__faq {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+
+    h2 {
+      color: #104c9a;
+      font-size: 32px;
+      margin-top: 20px;
+      font-weight: 700;
+    }
+
+    
+  }
+}
