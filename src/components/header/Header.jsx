@@ -1,16 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Navbar, Nav, Container, Form, Button } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import ProfileButton from "./profile/ProfileButton";
-import SearchBar from "./search-bar/SearchBar";
 import Logo from "./logo/Logo";
 import FavouritesButton from "./favs/FavouritesButton";
 import CartButton from "./cart/CartButton";
 import FiltersButton from "./filters/FiltersButton";
+import { AuthContext } from "../../contexts/AuthContext";
 
 import "./header.scss";
 
 const Header = () => {
+
+  const { isAuth } = useContext(AuthContext);
+
   return (
     <Navbar
       expand="lg"

@@ -5,21 +5,21 @@ import SignIn from "./sign-in/SignIn";
 
 import "./AuthModal.scss";
 
-const AuthModal = ({ isShown, toggleIsShown }) => {
-
-  function close(){
+const AuthModal = ({ isShown, setShowAuthModal }) => {
+  
+  function close() {
     console.log("close");
-    toggleIsShown(false);
+    setShowAuthModal(false);
   }
   // decide if the user is logging in or signing up
   // if true  => logging in
   // if false => signing up
-  const [registered, toggleRegistered] = useState(true);
-  // const [shown, toggleShown] = useState(isShown);
 
+  
+  const [registered, toggleRegistered] = useState(true);
 
   return (
-    <div className={isShown ? "modal" : "hidden"}>
+    <div className={isShown ? "modal_" : "hidden_"}>
       <div className="content">
         <span
           className="close-button"
@@ -30,7 +30,11 @@ const AuthModal = ({ isShown, toggleIsShown }) => {
         >
           &times;
         </span>
-        {registered ? <SignIn closeFunc={close}/> : <SignUp closeFunc={close}/>}
+        {registered ? (
+          <SignIn closeFunc={close} />
+        ) : (
+          <SignUp closeFunc={close} />
+        )}
         {registered ? (
           <div className="auth-actions">
             <a href="/">Forgot password?</a>
