@@ -9,6 +9,8 @@ import { AuthProvider } from "./contexts/AuthContext";
 import PersonalData from "./components/profile/personal-data/PersonalData";
 import Orders from "./components/profile/orders/Orders";
 import Cart from "./components/profile/cart/Cart";
+import HelpCenter from "./components/profile/help-center/HelpCenter";
+import EmailConfirmation from "./components/email-confirmation/EmailConfirmation";
 
 const App = () => {
   return (
@@ -17,15 +19,17 @@ const App = () => {
         <BrowserRouter>
           <Header />
           <Routes>
-            <Route path="/" element={<Catalogue />} />
+            <Route path="/" index element={<Catalogue />} />
             <Route path="/catalogue" element={<Catalogue />} />
             <Route path="/sale" element={<Sale />} />
-
+            <Route path="/confirm-register" element={<EmailConfirmation />} />
             <Route path="/profile" element={<Profile />}>
               <Route index element={<PersonalData />} />
               <Route path="personal" element={<PersonalData />} />
               <Route path="orders" element={<Orders />} />
               <Route path="cart" element={<Cart />} />
+              <Route path="help" element={<HelpCenter />} />
+
             </Route>
           </Routes>
           <Footer />

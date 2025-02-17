@@ -6,13 +6,43 @@ const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(null);
 
   useEffect(() => {
-    if (!checkLocalData()) {
-      initLocalData();
-    } else {
-      const localData = JSON.parse(localStorage.getItem("easybuy"));
-      setToken(localData.token);
+    validateLocalAndSessionData();
+
+    if(getTokenFromLocal() !== null) {
+      setToken(getTokenFromLocal());
+      return;
+    }
+
+    if(getTokenFromSession() !== null) {
+      setToken(getTokenFromSession());
+      return;
     }
   }, []);
+
+
+function getTokenFromLocal() {
+  if (!checkLocalData()) {
+    return null;
+  }
+
+  const localData = JSON.parse(localStorage.getItem("easybuy"));
+  return localData && localData.token ? localData.token : null;
+}
+  function getTokenFromSession() {
+    const sessionData = JSON.parse(sessionStorage.getItem("easybuy"));
+    return sessionData.token;
+  }
+
+  function validateLocalAndSessionData() {
+    if (!checkSessionData()) {
+      initSessionData();
+      console.log('session data initialized');
+    }
+    if (!checkLocalData()) {
+      initLocalData();
+      console.log('local data initialized');
+    }
+  }
 
   // checks if 'easybuy' object exists in localStorage
   function checkLocalData() {
@@ -43,55 +73,28 @@ const AuthProvider = ({ children }) => {
   }
 
   // updates token in localStorage and in state
-  const login = (token, remember) => {
-    // get data from localStorage and update token
-    
-    
-    // if remember is checked, save token in localStorage
-    if (remember) {
-      // update token in localStorage
-      const localData = JSON.parse(localStorage.getItem("easybuy"));
-      localData.token = token;
+  const login = (token_data) => {
 
-      // and save it
-      localStorage.setItem("easybuy", JSON.stringify(localData));
-      setToken(token);
-
-    }
-    else
-    {
-      // get data from sessionStorage and update token
-      const sessionData = JSON.parse(sessionStorage.getItem("easybuy"));
-      sessionData.token = token;
-
-      // save it
-      sessionStorage.setItem("easybuy", JSON.stringify(sessionData));
-      setToken(token);
-    }
+    localStorage.setItem("easybuy", JSON.stringify(token_data));
+    setToken(token_data.token);
 
   };
 
   // removes token from localStorage, session and from state
   const logout = () => {
-
     // remove token from localStorage
     const localData = JSON.parse(localStorage.getItem("easybuy"));
     localData.token = null;
     localStorage.setItem("easybuy", JSON.stringify(localData));
-    
-    // remove token from sessionStorage
-    const sessionData = JSON.parse(sessionStorage.getItem("easybuy"));
-    sessionData.token = null;
-    sessionStorage.setItem("easybuy", JSON.stringify(sessionData));
-    
-    // remove token from state
+
     setToken(null);
   };
 
   function isAuth() {
+
+    console.log('isAuth called');
     return token !== null;
   }
-
 
   return (
     <AuthContext.Provider value={{ token, login, logout, isAuth }}>
