@@ -123,10 +123,10 @@ const SignUp = ({ closeFunc }) => {
 
         </div>
 
-        <div className="form-checkbox">
+        {/* <div className="form-checkbox">
           <input type="checkbox" id="remember"/>
           <label htmlFor="remember">Remember me?</label>
-        </div>
+        </div> */}
         <div className="form-checkbox">
           <input type="checkbox" id="terms" required />
           <label htmlFor="terms">

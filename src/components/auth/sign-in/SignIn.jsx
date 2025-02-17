@@ -47,10 +47,6 @@ const SignIn = ({ closeFunc }) => {
         <input type="email" id="email" name="email" required />
         <label htmlFor="password">Password:</label>
         <input type="password" id="password" name="password" required />
-        <div className="remember-me">
-          <input type="checkbox" id="remember" name="remember" />
-          <label htmlFor="remember">Remember me</label>
-        </div>
         <button type="submit">Log in</button>
       </form>
     </>
