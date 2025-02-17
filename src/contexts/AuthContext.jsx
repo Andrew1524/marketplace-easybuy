@@ -20,11 +20,14 @@ const AuthProvider = ({ children }) => {
   }, []);
 
 
-  function getTokenFromLocal() {
-    const localData = JSON.parse(localStorage.getItem("easybuy"));
-    return localData.token;
+function getTokenFromLocal() {
+  if (!checkLocalData()) {
+    return null;
   }
 
+  const localData = JSON.parse(localStorage.getItem("easybuy"));
+  return localData && localData.token ? localData.token : null;
+}
   function getTokenFromSession() {
     const sessionData = JSON.parse(sessionStorage.getItem("easybuy"));
     return sessionData.token;
@@ -70,27 +73,11 @@ const AuthProvider = ({ children }) => {
   }
 
   // updates token in localStorage and in state
-  const login = (token, remember) => {
-    // get data from localStorage and update token
+  const login = (token_data) => {
 
-    // if remember is checked, save token in localStorage
-    if (remember) {
-      // update token in localStorage
-      const localData = JSON.parse(localStorage.getItem("easybuy"));
-      localData.token = token;
+    localStorage.setItem("easybuy", JSON.stringify(token_data));
+    setToken(token_data.token);
 
-      // and save it
-      localStorage.setItem("easybuy", JSON.stringify(localData));
-      setToken(token);
-    } else {
-      // get data from sessionStorage and update token
-      const sessionData = JSON.parse(sessionStorage.getItem("easybuy"));
-      sessionData.token = token;
-
-      // save it
-      sessionStorage.setItem("easybuy", JSON.stringify(sessionData));
-      setToken(token);
-    }
   };
 
   // removes token from localStorage, session and from state
@@ -100,12 +87,6 @@ const AuthProvider = ({ children }) => {
     localData.token = null;
     localStorage.setItem("easybuy", JSON.stringify(localData));
 
-    // remove token from sessionStorage
-    const sessionData = JSON.parse(sessionStorage.getItem("easybuy"));
-    sessionData.token = null;
-    sessionStorage.setItem("easybuy", JSON.stringify(sessionData));
-
-    // remove token from state
     setToken(null);
   };
 

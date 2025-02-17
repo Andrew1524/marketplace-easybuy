@@ -28,7 +28,7 @@ const ProfileButton = () => {
       >
         Sign Up
       </button>
-      {/* Переносим модальное окно за пределы контейнера кнопки */}
+
       {showAuthModal && (
         <AuthModal
           isShown={showAuthModal}
