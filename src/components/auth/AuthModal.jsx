@@ -10,13 +10,14 @@ const AuthModal = ({ isShown, setShowAuthModal }) => {
   function close() {
     console.log("close");
     setShowAuthModal(false);
+    window.location.reload();
   }
+
+
   // decide if the user is logging in or signing up
   // if true  => logging in
   // if false => signing up
-
-  
-  const [registered, toggleRegistered] = useState(true);
+    const [registered, toggleRegistered] = useState(true);
 
   return (
     <div className={isShown ? "modal_" : "hidden_"}>

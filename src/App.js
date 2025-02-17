@@ -19,10 +19,10 @@ const App = () => {
         <BrowserRouter>
           <Header />
           <Routes>
-            <Route path="/" element={<Catalogue />} />
+            <Route path="/" index element={<Catalogue />} />
             <Route path="/catalogue" element={<Catalogue />} />
             <Route path="/sale" element={<Sale />} />
-            <Route path="/confirm-email" element={<EmailConfirmation />} />
+            <Route path="/confirm-register" element={<EmailConfirmation />} />
             <Route path="/profile" element={<Profile />}>
               <Route index element={<PersonalData />} />
               <Route path="personal" element={<PersonalData />} />

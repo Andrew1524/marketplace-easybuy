@@ -24,13 +24,14 @@ const SignIn = ({ closeFunc }) => {
 
   function sendSignInRequest(email, password, remember) {
     axios
-      .post(`${Urls.API_BASE_URL_LOCAL}/auth/login`, {
+      .post(`${Urls.API_BASE_URL_LOCAL}/api/Authentication/login`, {
         email,
         password,
       })
       .then((response) => {
         console.log(response);
-        login(response.data.token, remember);
+        console.log(response.data.token);
+        login(response.data.token);
         closeFunc();
       })
       .catch((error) => {

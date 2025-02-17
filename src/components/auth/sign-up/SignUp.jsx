@@ -11,7 +11,7 @@ const SignUp = ({ closeFunc }) => {
 
 
   // если регистрация прошла успешно
-  const [isSuccess, setIsSuccess] = useState(true);
+  const [isSuccess, setIsSuccess] = useState(false);
 
   const { login } = useContext(AuthContext);
 
@@ -63,7 +63,7 @@ const SignUp = ({ closeFunc }) => {
 
   function sendSignUpRequest(email, password, firstName, lastName, remember) {
     axious
-      .post(`${Urls.API_BASE_URL_LOCAL}/Authentication/register`, {
+      .post(`${Urls.API_BASE_URL_PROD}/api/Authentication/register`, {
         email,
         password,
         firstName,
@@ -90,61 +90,65 @@ const SignUp = ({ closeFunc }) => {
   }
 
   return (
-    <>
+      <>
       {error && <div className="error">{error}</div>}
       {isSuccess && (
-        <div className="success-container">
-          <h2 className="success-header">Check your email!</h2>
-          <p className="success-text">We've sent you a link to verify your account</p>
-        </div>
+          <div className="success-container">
+            <h2 className="success-header">Check your email!</h2>
+            <p className="success-text">We've sent you a link to verify your account</p>
+          </div>
       )}
-      <h1>Sign Up</h1>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="email">Email</label>
-        <input type="email" id="email" placeholder="Email" required />
-        <label htmlFor="password">Password</label>
-        <input type="password" id="password" placeholder="Password" required />
-        <label htmlFor="confirmPassword">Repeat Password</label>
-        <input
+      {!isSuccess && ( <>
+          <h1>Sign Up</h1>
+        <form onSubmit={handleSubmit}>
+      <label htmlFor="email">Email</label>
+      <input type="email" id="email" placeholder="Email" required/>
+      <label htmlFor="password">Password</label>
+      <input type="password" id="password" placeholder="Password" required/>
+      <label htmlFor="confirmPassword">Repeat Password</label>
+      <input
           type="password"
           id="confirmPassword"
           placeholder="Repeat Password"
-        />
-        <div className='first-last-name'>
+      />
+      <div className='first-last-name'>
 
-          <div className='first-name'>
-            <label htmlFor="firstName">First Name</label>
-            <input type="text" id="firstName" placeholder="First Name" required/>
-          </div>
-          <div className='last-name'>
-            <label htmlFor="lastName">Last Name</label>
-            <input type="text" id="lastName" placeholder="Last Name" required/>
-          </div>
-
+        <div className='first-name'>
+          <label htmlFor="firstName">First Name</label>
+          <input type="text" id="firstName" placeholder="First Name" required/>
+        </div>
+        <div className='last-name'>
+          <label htmlFor="lastName">Last Name</label>
+          <input type="text" id="lastName" placeholder="Last Name" required/>
         </div>
 
-        <div className="form-checkbox">
-          <input type="checkbox" id="remember"/>
-          <label htmlFor="remember">Remember me?</label>
-        </div>
-        <div className="form-checkbox">
-          <input type="checkbox" id="terms" required />
-          <label htmlFor="terms">
-            I agree to the <a href="/">terms of service</a>
-          </label>
-        </div>
-        <div className="form-checkbox">
-          <input type="checkbox" id="privacy" required />
-          <label htmlFor="privacy">
-            I agree to the <a href="/">privacy policy</a>
-          </label>
-        </div>
+      </div>
 
-        {/* нужно еще эту кнопку разукрасить как в дизайне */}
-        <button type="submit">Sign Up</button>
+      <div className="form-checkbox">
+        <input type="checkbox" id="remember"/>
+        <label htmlFor="remember">Remember me?</label>
+      </div>
+      <div className="form-checkbox">
+        <input type="checkbox" id="terms" required/>
+        <label htmlFor="terms">
+          I agree to the <a href="/">terms of service</a>
+        </label>
+      </div>
+      <div className="form-checkbox">
+        <input type="checkbox" id="privacy" required/>
+        <label htmlFor="privacy">
+          I agree to the <a href="/">privacy policy</a>
+        </label>
+      </div>
+
+      {/* нужно еще эту кнопку разукрасить как в дизайне */}
+      <button type="submit">Sign Up</button>
       </form>
-    </>
-  );
+      </>)
+}
+</>
+)
+  ;
 };
 
 export default SignUp;
